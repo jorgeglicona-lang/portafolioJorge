@@ -11,8 +11,8 @@ spring.jpa.open-in-view=false
 # ==========================================
 # CONFIGURACIÓN DE CORREO (JavaMailSender)
 # ==========================================
-spring.mail.host=credenciales
-spring.mail.port=puertoAbierto
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
 spring.mail.username=${MAIL_USERNAME}
 spring.mail.password=${MAIL_PASSWORD}
 spring.mail.properties.mail.smtp.auth=true

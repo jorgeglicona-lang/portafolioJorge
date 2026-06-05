@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import java.util.List
 @Controller
 public class ContactController {
     @Autowired
@@ -39,4 +39,12 @@ public class ContactController {
 
         mailSender.send(mail);
     }
+
+        @GetMapping("/ver-mensajes-secretos")
+    @org.springframework.web.bind.annotation.ResponseBody
+    public java.util.List<ContactoDTO> verMensajes() {
+        // Esto buscará todos los mensajes en la BD y los mostrará en la pantalla
+        return repositorio.findAll();
+    }
+    
 }

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <title>Jorge | Desarrollador Java Backend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/js/Galeria.js"></script>
+    <script src="/js/Lista.js"></script>
+</head>
+<body class="bg-slate-800 font-sans min-h-screen flex flex-col">
+
+<header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-[999]">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold tracking-wider text-emerald-400 font-mono">&lt;JORGE /&gt;</h1>
+        <nav class="space-x-6 text-sm font-medium text-slate-400">
+            <a href="#yo" class="hover:text-emerald-400 transition-colors">Sobre mí</a>
+            <a href="#project" class="hover:text-emerald-400 transition-colors">Proyectos</a>
+            <a href="#contactoDTO" class="hover:text-emerald-400 transition-colors">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<section class="max-w-5xl mx-auto px-4 py-24 flex flex-col justify-center w-full">
+    <div class="max-w-2xl space-y-6">
+        <p class="text-emerald-400 font-mono text-base tracking-widest uppercase">Hola, mi nombre es</p>
+        <h2 class="text-5xl font-extrabold tracking-tight text-white sm:text-6xl drop-shadow-[0_0_5px_rgba(52,211,153,0.8)]">Jorge Granados.</h2>
+        <h3 class="text-4xl font-bold tracking-tight text-slate-400 sm:text-5xl">Desarrollo sistemas y arquitectura backend.</h3>
+
+        <div class="pt-8">
+            <a href="https://github.com/jorgeglicona-lang" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center px-6 py-3 border border-emerald-400
+               text-emerald-400 font-medium rounded-md hover:bg-emerald-400/10 transition-all duration-300
+               font-mono">
+                Ver mis proyectos en Git
+            </a>
+        </div>
+    </div>
+</section>
+
+<main class="bg-slate-50 text-slate-800 w-full flex-grow">
+
+    <section id="yo" class="max-w-5xl mx-auto px-4 py-20 border-b border-slate-900/30">
+        <h3 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl mb-12">
+            Sobre <span class="text-emerald-600">Mí</span>
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+            <div class="md:col-span-2 space-y-6">
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Soy estudiante de ingeniería en el
+                    <span class="text-emerald-600 font-bold">IPN</span> enfocado en crear soluciones
+                    robustas y lógicas. Me apasiona entender cómo se conectan los sistemas completos capa por capa
+                    usando Java, Spring Boot y bases de datos relacionales con MariaDB, PostgreSQL, SQL Server y SQLite.
+                </p>
+            </div>
+
+            <div class="md:col-span-1 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-emerald-500 rounded-2xl transform translate-x-3 translate-y-3 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                    <img src="/img/perfil.jpeg" alt="Foto de Jorge" class="relative rounded-2xl w-64 h-64 object-cover border-2 border-slate-800 grayscale hover:grayscale-0 transition-all duration-500 z-10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project" class="max-w-5xl mx-auto px-4 py-20 border-b border-slate-900/30">
+        <h3 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl mb-12">
+            Proyectos <span class="text-emerald-600">Destacados</span>
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-400 transition-colors duration-300 flex flex-col shadow-xl relative hover:z-50" onmouseenter="iniciarCarrusel('tlaxcalli')" onmouseleave="detenerCarrusel('tlaxcalli')">
+                <div class="relative h-48 w-full group mt-4 z-20">
+                    <div class="absolute top-1/2 left-1/2 w-[calc(100%-2rem)] h-full -translate-x-1/2 -translate-y-1/2 group-hover:w-[105%] group-hover:h-[320px] transition-all duration-500 z-20">
+
+                        <div class="absolute inset-0 bg-emerald-500 rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-3 group-hover:translate-y-3 transition-all duration-500 z-10">
+                        </div>
+
+                        <div class="absolute inset-0 bg-slate-900 rounded-lg border-2 border-slate-700 overflow-hidden z-20 shadow-2xl flex items-center justify-center transition-all duration-500">
+                            <button onclick="cambiarFotoManual('tlaxcalli', -1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-slate-900/80 hover:bg-emerald-500 text-emerald-400 hover:text-slate-900 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 font-bold cursor-pointer">
+                                &lt;
+                            </button>
+                            <img id="img-tlaxcalli" src="/img/projects/tlaxcalli/tlogin.png" alt="galería de Tlaxcalli" class="w-full h-full object-cover group-hover:object-contain grayscale group-hover:grayscale-0 transition-all duration-500 p-0 group-hover:p-2">
+                            <button onclick="cambiarFotoManual('tlaxcalli', 1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-slate-900/80 hover:bg-emerald-500 text-emerald-400 hover:text-slate-900 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 font-bold cursor-pointer">
+                                &gt;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 flex-grow flex flex-col mt-4">
+                    <h2 class="text-xs font-extrabold text-emerald-400 mb-2 tracking-wider">2026</h2>
+                    <h4 class="text-xl font-bold text-white mb-3">Sistema de Gestión: Tortillería</h4>
+
+                    <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                        Aplicación de escritorio para puntos de venta enfocada en la gestión de compras y ventas. Diseñada con una arquitectura backend sólida para garantizar el rendimiento en equipos de bajos recursos.
+                    </p>
+
+                    <ul class="text-slate-400 text-sm mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2 shrink-0">▸</span>
+                            <span>Migración exitosa de base de datos de <strong>SQL Server a SQLite</strong> para optimizar la portabilidad local.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2 shrink-0">▸</span>
+                            <span>Módulo integral de seguridad con manejo de usuarios y roles de permisos.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2 shrink-0">▸</span>
+                            <span>Generación automatizada de reportes de ventas y auditoría.</span>
+                        </li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">Java</span>
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">Swing</span>
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">JPA / SQLite</span>
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">SQL Server</span>
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">Git / GitHub</span>
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">Control de versiones</span>
+                    </div>
+
+                    <a href="https://github.com/jorgeglicona-lang/Tlaxcalli.git" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 text-sm font-semibold hover:text-emerald-300 transition-colors group/link">
+                        Ver repositorio
+                        <span class="ml-1 transform group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-400 transition-colors duration-300 flex flex-col shadow-xl relative hover:z-50" onmouseenter="iniciarCarrusel('cproveedores')" onmouseleave="detenerCarrusel('cproveedores')">
+
+                <div class="relative h-48 w-full group mt-4 z-20">
+                    <div class="absolute top-1/2 left-1/2 w-[calc(100%-2rem)] h-full -translate-x-1/2 -translate-y-1/2 group-hover:w-[105%] group-hover:h-[320px] transition-all duration-500 z-20">
+                        <div class="absolute inset-0 bg-emerald-500 rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-3 group-hover:translate-y-3 transition-all duration-500 z-10">
+                        </div>
+                            <div class="absolute inset-0 bg-slate-900 rounded-lg border-2 border-slate-700 overflow-hidden z-20 shadow-2xl flex items-center justify-center transition-all duration-500">
+                                <button onclick="cambiarFotoManual('cproveedores', -1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-slate-900/80 hover:bg-emerald-500 text-emerald-400 hover:text-slate-900 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 font-bold cursor-pointer">
+                                    &lt;
+                                </button>
+
+                                <img id="img-cproveedores" src="/img/projects/control-abarrotes/iniAba.png" alt="galería de cproveedores" class="w-full h-full object-cover group-hover:object-contain grayscale group-hover:grayscale-0 transition-all duration-500 p-0 group-hover:p-2">
+
+                                <button onclick="cambiarFotoManual('cproveedores', 1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-slate-900/80 hover:bg-emerald-500 text-emerald-400 hover:text-slate-900 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 font-bold cursor-pointer">
+                                    &gt;
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="p-6 flex-grow flex flex-col">
+                    <h2 class="text-xs font-extrabold text-emerald-400 mb-2 tracking-wider">2026</h2>
+                    <h4 class="text-xl font-bold text-white mb-3">Control de Proveedores: Abarrotes</h4>
+                    <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                        Aplicación web orientada a la logística interna del negocio. Especializada en la gestión del padrón de proveedores, generación de listas de pedidos y control de recepción de mercancía.
+                    </p>
+                    <ul class="text-slate-400 text-sm mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2 shrink-0">▸</span>
+                            <span>Desarrollo de API REST con <strong>Spring Boot</strong> enfocada en el flujo de la cadena de suministro.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2 shrink-0">▸</span>
+                            <span>Implementación de capa de persistencia con <strong>Spring Data JPA</strong> para el registro exacto de entregas.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-400 mr-2 shrink-0">▸</span>
+                            <span>Arquitectura backend estructurada para garantizar eficiencia y evitar el cruce de datos con el área de ventas.</span>
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">Java</span>
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">Spring Boot</span>
+                        <span class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full">JPA / SQLite</span>
+                    </div>
+                    <a href="https://github.com/jorgeglicona-lang/Proveedores_Abarrotes.git" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-emerald-400 text-sm font-semibold hover:text-emerald-300 transition-colors group">
+                        Ver repositorio
+                        <span class="ml-1 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-end w-full max-w-6xl mx-auto px-10 mt-10">
+            <button onclick="toggleProyectos()" id="btnVerMas" class="px-5 rounded-md text-emerald-500 bg-slate-800 hover:bg-emerald-400/40 hover:text-slate-600 border border-emerald-400  font-semibold text-sm transition-colors flex items-center group">
+                ver más
+                <svg class="w-6 h-6 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </button>
+        </div>
+
+        <div id="listaRepositorios" class="max-h-0 opacity-0 overflow-hidden transition-all duration-700 ease-in-out w-full max-w-6xl mx-auto px-4">
+
+            <div class="mt-8 space-y-3 pb-8">
+
+                <div th:each="proyecto : ${proyectos}"
+                     class="bg-slate-800 border border-slate-700 rounded-lg p-4 hover:border-emerald-500 transition-colors shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+
+                    <h4 class="text-white font-bold min-w-[150px]" th:text="${proyecto.name}">Proyecto</h4>
+
+                    <p class="text-slate-400 text-xs truncate max-w-md flex-grow"
+                       th:text="${proyecto.description != null ? proyecto.description : 'Sin descripción'}">Pq desc.</p>
+
+                    <div class="flex items-center gap-4 min-w-[200px] justify-center">
+                        <span th:if="${proyecto.language != null}" class="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-400/10 rounded-full" th:text="${proyecto.language}">lenguaje</span>
+                        <span th:unless="${proyecto.language != null}" class="text-slate-500 text-xs font-semibold">N/A</span>
+
+                        <a th:href="${proyecto.url}" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:text-emerald-300 text-sm font-semibold whitespace-nowrap group/link">
+                            ver repo
+                            <svg class="w-6 h-6 ml-1 transform group-hover/link:translate-x-1 transition-transform inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contactoDTO" class="max-w-5xl mx-auto px-4 py-20">
+        <h3 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl mb-8">
+            Cont<span class="text-emerald-600">acto</span>
+        </h3>
+        <div th:if="${mensajeExito}" class="w-full max-w-lg mx-auto bg-emerald-500/10 border-l-4 border-emerald-500 text-emerald-400 p-4 mb-6 rounded-r-lg shadow-lg" role="alert">
+            <div class="flex items-center">
+                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="font-semibold" th:text="${mensajeExito}"></span>
+            </div>
+        </div>
+        <form action="/enviar-mensaje" method="POST" class="w-full max-w-lg mt-8 space-y-6">
+
+            <div>
+                <label for="nombre" class="block text-s font-medium text-emerald-500 mb-2">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required
+                       class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent text-white placeholder-slate-400 transition-colors"
+                       placeholder="Ej. Reclutador de Google">
+            </div>
+
+            <div>
+                <label for="correo" class="block text-s font-medium text-emerald-500 mb-2">Correo Electrónico</label>
+                <input type="email" id="correo" name="correo" required
+                       class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent text-white placeholder-slate-400 transition-colors"
+                       placeholder="ejemplo@empresa.com">
+            </div>
+
+            <div>
+                <label for="mensaje" class="block text-s font-medium text-emerald-500 mb-2">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required
+                          class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent text-white placeholder-slate-400 transition-colors resize-none"
+                          placeholder="Me interesa tu perfil para un puesto backend..."></textarea>
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold py-3 px-6 rounded-lg transition-transform transform hover:-translate-y-1 shadow-lg flex justify-center items-center">
+                Enviar Mensaje
+                <span class="ml-2">🚀</span>
+            </button>
+        </form>
+    </section>
+
+</main>
+
+<footer class="border-t border-slate-200 bg-slate-900/50 py-8">
+    <div class="max-w-5xl mx-auto px-4 text-center text-sm text-slate-500">
+        <p>© 2026 Jorge. Diseñado como un sistema integrado en Spring Boot.</p>
+    </div>
+</footer>
+
+</body>
+</html>

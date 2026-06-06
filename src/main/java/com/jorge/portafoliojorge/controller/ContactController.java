@@ -24,17 +24,19 @@ public class ContactController {
     @PostMapping("/enviar-mensaje")
     public String procesarFormulario(@ModelAttribute ContactoDTO contactoDTO, RedirectAttributes redirectAttributes){
 
-        // 1. Guardamos el mensaje en la base de datos
+                // 1. Guardamos el mensaje en la base de datos
         repositorio.save(contactoDTO);
         
-        // 2. El escudo protector para que el celular no se congele
-        try {
-            enviarCorreo(contactoDTO);
-        } catch (Exception e) {
-            System.out.println("Error al enviar el correo: " + e.getMessage());
-        }
+        // 2. Magia Asíncrona: Mandamos el correo en segundo plano
+        java.util.concurrent.CompletableFuture.runAsync(() -> {
+            try {
+                enviarCorreo(contactoDTO);
+            } catch (Exception e) {
+                System.out.println("Error silencioso al enviar el correo: " + e.getMessage());
+            }
+        });
 
-        // 3. Confirmación rápida al usuario
+        // 3. Confirmación rápida al usuario (¡Esto se ejecutará al instante!)
         redirectAttributes.addFlashAttribute("mensajeExito",
                 "¡Mensaje enviado con éxito! Me pondré en contacto muy pronto.");
         return "redirect:/#contacto";

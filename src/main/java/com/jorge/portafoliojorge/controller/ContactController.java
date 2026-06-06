@@ -6,22 +6,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import java.util.List
+
+import java.util.List;
+
 @Controller
 public class ContactController {
     @Autowired
     private mensajeRepo repositorio;
     @Autowired
     private JavaMailSender mailSender;
-    @PostMapping("/enviar-mensaje")
 
+    @PostMapping("/enviar-mensaje")
     public String procesarFormulario(@ModelAttribute ContactoDTO contactoDTO, RedirectAttributes redirectAttributes){
 
+        // 1. Guardamos el mensaje en la base de datos
         repositorio.save(contactoDTO);
-        enviarCorreo(contactoDTO);
+        
+        // 2. El escudo protector para que el celular no se congele
+        try {
+            enviarCorreo(contactoDTO);
+        } catch (Exception e) {
+            System.out.println("Error al enviar el correo: " + e.getMessage());
+        }
+
+        // 3. Confirmación rápida al usuario
         redirectAttributes.addFlashAttribute("mensajeExito",
                 "¡Mensaje enviado con éxito! Me pondré en contacto muy pronto.");
         return "redirect:/#contacto";
@@ -40,11 +53,10 @@ public class ContactController {
         mailSender.send(mail);
     }
 
-        @GetMapping("/ver-mensajes-secretos")
-    @org.springframework.web.bind.annotation.ResponseBody
-    public java.util.List<ContactoDTO> verMensajes() {
+    @GetMapping("/ver-mensajes-secretos")
+    @ResponseBody
+    public List<ContactoDTO> verMensajes() {
         // Esto buscará todos los mensajes en la BD y los mostrará en la pantalla
         return repositorio.findAll();
     }
-    
 }

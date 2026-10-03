@@ -41,7 +41,7 @@ public class ContactController {
         // 3. Confirmación al usuario
         redirectAttributes.addFlashAttribute("mensajeExito",
                 "¡Mensaje enviado con éxito! Me pondré en contacto muy pronto.");
-        return "redirect:/#contacto";
+        return "redirect:/#contactoDTO";
     }
 
     @GetMapping("/ver-mensajes-secretos")

@@ -20,7 +20,7 @@ public class ServiceGit {
 
         return tlp.stream()
                 .filter(p -> !p.isFork())
-                .filter(p -> p.getTopics() != null && p.getTopics().contains("DESTACADO"))
+                .filter(p -> p.getTopics() != null && p.getTopics().contains("destacado"))
                 .collect(Collectors.toList());
     }
 }

@@ -19,4 +19,6 @@ public class ProyectosGitDTO {
     private String url;
 
     private String language;
+
+    private boolean fork;
 }

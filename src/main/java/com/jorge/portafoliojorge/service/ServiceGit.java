@@ -17,11 +17,10 @@ public class ServiceGit {
         assert pA != null;
 
         List<ProyectosGitDTO> tlp = Arrays.asList(pA);
-        List<String> PI = Arrays.asList("Tlaxcalli", "Proveedores_Abarrotes", "portafolioJorge");
 
         return tlp.stream()
-                .filter(proyectos -> !proyectos.isFork())
-                .filter(proyectos -> !PI.contains(proyectos.getName()))
+                .filter(p -> !p.isFork())
+                .filter(p -> p.getTopics() != null && p.getTopics().contains("DESTACADO"))
                 .collect(Collectors.toList());
     }
 }

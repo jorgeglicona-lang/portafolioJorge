@@ -17,23 +17,19 @@ const baseDeDatosFotos = {
     ]
 };
 
-// 2. Registro de posiciones iniciales
 const indicesActuales = {
     'tlaxcalli': 0,
     'cproveedores': 0,
 };
 
-// Objeto para almacenar los identificadores de los setTimeout
 const relojes = {};
 
-// 3. El motor automatizado (Sin necesidad de usar Switch)
 function cambiarFoto(proyecto, direccion) {
     const fotos = baseDeDatosFotos[proyecto];
-    if (!fotos) return; // Si hay un error de dedo en el HTML, aquí se protege
+    if (!fotos) return;
 
     indicesActuales[proyecto] += direccion;
 
-    // Reglas de bucle infinito
     if (indicesActuales[proyecto] >= fotos.length) {
         indicesActuales[proyecto] = 0;
     } else if (indicesActuales[proyecto] < 0) {
@@ -46,35 +42,33 @@ function cambiarFoto(proyecto, direccion) {
     }
 }
 
-// 3. Encender el carrusel (Se activa al pasar el ratón)
+
 function iniciarCarrusel(proyecto) {
-    // Primero nos aseguramos de limpiar cualquier temporizador activo para evitar duplicados
+
     detenerCarrusel(proyecto);
 
-    // Programamos la SIGUIENTE foto para dentro de 3 segundos
+
     relojes[proyecto] = setTimeout(() => {
         cambiarFoto(proyecto, 1);
-        // Llamada recursiva: el reloj se vuelve a programar a sí mismo solo si el ratón sigue ahí
+
         iniciarCarrusel(proyecto);
     }, 3000);
 }
 
-// 4. Apagar por completo el carrusel (Se activa al quitar el ratón)
+
 function detenerCarrusel(proyecto) {
     if (relojes[proyecto]) {
         clearTimeout(relojes[proyecto]);
-        relojes[proyecto] = null; // Liberamos el recurso de la memoria
+        relojes[proyecto] = null;
     }
 }
 
-// 5. Control absoluto para los clics manuales del usuario (< o >)
+
 function cambiarFotoManual(proyecto, direccion) {
-    // Detenemos el reloj de inmediato para congelar la línea del tiempo
+
     detenerCarrusel(proyecto);
 
-    // Cambiamos la foto al instante según la flecha presionada
     cambiarFoto(proyecto, direccion);
 
-    // Volvemos a arrancar el carrusel desde cero, dando 3 segundos limpios a la foto seleccionada
     iniciarCarrusel(proyecto);
 }

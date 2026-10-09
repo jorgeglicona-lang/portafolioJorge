@@ -26,10 +26,8 @@ public class ContactController {
     @PostMapping("/enviar-mensaje")
     public String procesarFormulario(@ModelAttribute ContactoDTO contactoDTO, RedirectAttributes redirectAttributes) {
 
-        // 1. Guardamos el mensaje en Neon
         repositorio.save(contactoDTO);
 
-        // 2. Disparo por HTTP a través del puerto 443 (sin bloqueos de red)
         CompletableFuture.runAsync(() -> {
             try {
                 emailService.enviarCorreo(contactoDTO);
@@ -37,8 +35,6 @@ public class ContactController {
                 System.out.println("Error asíncrono al enviar correo: " + e.getMessage());
             }
         });
-
-        // 3. Confirmación al usuario
         redirectAttributes.addFlashAttribute("mensajeExito",
                 "¡Mensaje enviado con éxito! Me pondré en contacto muy pronto.");
         return "redirect:/#contactoDTO";
